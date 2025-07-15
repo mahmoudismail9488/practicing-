@@ -40,6 +40,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        actions: [
+          if (currentPage != onBoardingPages.length - 1)
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (ctx) => SignUpScreen()),
+                );
+              },
+              child: Text(
+                "Skip",
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+        ],
+      ),
       body: PageView.builder(
         onPageChanged: (value) {
           setState(() {
@@ -52,54 +72,100 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.only(left: 16, bottom: 16, right: 16),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 16,
             children: [
-              if (currentPage != onBoardingPages.length - 1)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (ctx) => SignUpScreen()),
-                        );
-                      },
+              Image.asset(
+                onBoardingPages[index].imagePath,
+                width: 343,
+                height: 263.85,
+              ),
+              Text(
+                onBoardingPages[index].title,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  onBoardingPages[index].description,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: 24),
+              if (index < onBoardingPages.length - 1)
+                Container(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(12),
+                      ),
+                      backgroundColor: Theme.of(context).primaryColor,
+                      foregroundColor: Colors.white,
+                    ),
+                    onPressed: () {
+                      if (currentPage == onBoardingPages.length) {
+                        return;
+                      }
+                      setState(() {
+                        currentPage = currentPage + 1;
+                      });
+                      onBoardingPageController.nextPage(
+                        duration: Duration(milliseconds: 100),
+                        curve: Curves.linear,
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Skip",
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).primaryColor,
-                          fontSize: 16,
+                        "Next",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 16,
-                children: [
-                  Image.asset(
-                    onBoardingPages[index].imagePath,
-                    width: 343,
-                    height: 263.85,
-                  ),
-                  Text(
-                    onBoardingPages[index].title,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Text(
-                      onBoardingPages[index].description,
-                      textAlign: TextAlign.center,
+              if (index >= onBoardingPages.length - 1)
+                Row(
+                  spacing: 16,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          side: BorderSide(
+                            width: 2,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadiusGeometry.circular(12),
+                          ),
+                          backgroundColor: Colors.white,
+                        ),
+                        onPressed: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12.0,
+                            horizontal: 24,
+                          ),
+                          child: Text(
+                            "Sign In",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 24),
-                  if (index < onBoardingPages.length - 1)
-                    Container(
-                      width: double.infinity,
+
+                    Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -108,22 +174,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           backgroundColor: Theme.of(context).primaryColor,
                           foregroundColor: Colors.white,
                         ),
-                        onPressed: () {
-                          if (currentPage == onBoardingPages.length) {
-                            return;
-                          }
-                          setState(() {
-                            currentPage = currentPage + 1;
-                          });
-                          onBoardingPageController.nextPage(
-                            duration: Duration(milliseconds: 100),
-                            curve: Curves.linear,
-                          );
-                        },
+                        onPressed: () {},
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12.0,
+                            horizontal: 24,
+                          ),
                           child: Text(
-                            "Next",
+                            "Sign Up",
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
@@ -133,83 +191,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                       ),
                     ),
-                  if (index >= onBoardingPages.length - 1)
-                    Row(
-                      spacing: 16,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Expanded(
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadiusGeometry.circular(12),
-                              ),
-                              backgroundColor: Theme.,
-                            ),
-                            onPressed: () {
-                              if (currentPage == onBoardingPages.length) {
-                                return;
-                              }
-                              setState(() {
-                                currentPage = currentPage + 1;
-                              });
-                              onBoardingPageController.nextPage(
-                                duration: Duration(milliseconds: 100),
-                                curve: Curves.linear,
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Sign In",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        Expanded(
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadiusGeometry.circular(12),
-                              ),
-                              backgroundColor: Theme.of(context).primaryColor,
-                              foregroundColor: Colors.white,
-                            ),
-                            onPressed: () {
-                              if (currentPage == onBoardingPages.length) {
-                                return;
-                              }
-                              setState(() {
-                                currentPage = currentPage + 1;
-                              });
-                              onBoardingPageController.nextPage(
-                                duration: Duration(milliseconds: 100),
-                                curve: Curves.linear,
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Sign Up",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                ],
-              ),
+                  ],
+                ),
             ],
           ),
         ),
