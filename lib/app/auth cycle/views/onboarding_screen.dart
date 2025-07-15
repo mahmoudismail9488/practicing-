@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_app/widget/sign_up_screen.dart';
+import 'package:new_app/app/auth%20cycle/views/sign_up_screen.dart';
 // model of onborading
 
 class OnBoardingData {
@@ -139,7 +139,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
                           side: BorderSide(
-                            width: 2,
+                            width: 1,
                             color: Theme.of(context).primaryColor,
                           ),
                           shape: RoundedRectangleBorder(

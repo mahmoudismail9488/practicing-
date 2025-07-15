@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_app/styles/theme_manager.dart';
-import 'package:new_app/widget/splash_screen.dart';
+import 'package:new_app/app/auth%20cycle/views/splash_screen.dart';
 
 void main() {
   runApp(
