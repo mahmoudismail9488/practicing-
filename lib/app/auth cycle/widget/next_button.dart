@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NextButton extends StatelessWidget {
-  const NextButton({super.key, required this.nextFunction});
+  const NextButton({super.key, required this.nextFunction, required this.text});
   final Function nextFunction;
-
+  final String text;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -14,7 +14,7 @@ class NextButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24),
         child: Text(
-          "Next",
+          text,
           style: TextStyle(
             fontSize: 18,
             color: Colors.white,

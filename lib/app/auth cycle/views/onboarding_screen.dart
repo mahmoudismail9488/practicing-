@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:new_app/app/auth%20cycle/views/sign_in_screen.dart';
 import 'package:new_app/app/auth%20cycle/views/sign_up_screen.dart';
 import 'package:new_app/app/auth cycle/models/on_boarding_mesaages.dart';
 import 'package:new_app/app/auth%20cycle/widget/next_button.dart';
+import 'package:new_app/styles/colors.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -13,6 +15,7 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   PageController onBoardingPageController = PageController(initialPage: 0);
   int currentPage = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,6 +101,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 curve: Curves.linear,
                               );
                             },
+                            text: "Next",
                           ),
                         ),
                       ),
@@ -114,7 +118,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 style: Theme.of(
                                   context,
                                 ).outlinedButtonTheme.style,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (ctx) => SignInScreen(),
+                                    ),
+                                  );
+                                },
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 12.0,
@@ -137,7 +147,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 style: Theme.of(
                                   context,
                                 ).elevatedButtonTheme.style,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (ctx) => SignUpScreen(),
+                                    ),
+                                  );
+                                },
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 12.0,
@@ -161,14 +177,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 10,
-                          height: 10,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(10),
+                        for (var i = 0; i < onBoardingPages.length; i++)
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                onBoardingPageController.jumpToPage(i);
+                              });
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 2.0,
+                              ),
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 500),
+                                width: i == currentPage ? 38 : 10,
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  color: i == currentPage
+                                      ? Theme.of(context).primaryColor
+                                      : lightLabelTextColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ],

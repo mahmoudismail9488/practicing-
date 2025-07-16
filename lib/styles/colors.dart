@@ -12,3 +12,5 @@ const darkContainerColor = Color(0xff06463C);
 const darkTitleTextColor = Color.fromARGB(255, 255, 255, 255);
 const darkLabelTextColor = Color.fromARGB(255, 212, 220, 225);
 const darkFormLabelColor = Color(0xffCBD2D6);
+// usable colors
+const smallTitleColor = Color(0xff7A8B96);
