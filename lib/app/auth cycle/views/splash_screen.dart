@@ -22,13 +22,13 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     // scale animation for rawmart image
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 400),
       vsync: this,
     );
     _controller.forward();
     _scaleAnimation = CurvedAnimation(
       parent: _controller,
-      curve: Curves.easeIn,
+      curve: Curves.easeInCirc,
     );
     // fade for rawmart
 

@@ -22,38 +22,41 @@ class AuthAppbar extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 48),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 8,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    size: 24,
-                    color: Colors.white,
+            child: Container(
+              width: 250,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 8,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      size: 24,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontFamily: GoogleFonts.montserrat.toString(),
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontFamily: GoogleFonts.montserrat.toString(),
+                    ),
                   ),
-                ),
-                Text(
-                  subTitle,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontFamily: GoogleFonts.montserrat.toString(),
+                  Text(
+                    subTitle,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontFamily: GoogleFonts.montserrat.toString(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Image.asset("assets/imgs/Union.png", width: 120),

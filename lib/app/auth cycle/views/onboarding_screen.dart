@@ -28,7 +28,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               onPressed: () {
                 Navigator.of(
                   context,
-                ).push(MaterialPageRoute(builder: (ctx) => SignUpScreen()));
+                ).push(MaterialPageRoute(builder: (ctx) => SignInScreen()));
               },
               child: Text(
                 "Skip",
@@ -190,7 +190,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                               child: AnimatedContainer(
                                 duration: Duration(milliseconds: 500),
-                                width: i == currentPage ? 38 : 10,
+                                width: i == currentPage ? 30 : 10,
                                 height: 10,
                                 decoration: BoxDecoration(
                                   color: i == currentPage

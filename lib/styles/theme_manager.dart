@@ -47,6 +47,27 @@ ThemeData lightTheme = ThemeData(
       backgroundColor: Colors.white,
     ),
   ),
+  // appBar theme
+  appBarTheme: AppBarTheme(
+    backgroundColor: lightBackgroundColor,
+    centerTitle: true,
+  ),
+  // input decoration theme
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(color: lightContainerColor, width: 2),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(color: lightContainerColor, width: 2),
+    ),
+  ),
+  textSelectionTheme: TextSelectionThemeData(
+    cursorColor: lightContainerColor,
+    selectionColor: lightContainerColor,
+    selectionHandleColor: lightContainerColor,
+  ),
 );
 
 ThemeData darkTheme = ThemeData(
@@ -73,6 +94,11 @@ ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.w500,
     ),
   ),
+  // dark theme of appbar
+  appBarTheme: AppBarTheme(
+    backgroundColor: darkBackgroundColor,
+    centerTitle: true,
+  ),
   // Elevated button theme
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
@@ -92,5 +118,21 @@ ThemeData darkTheme = ThemeData(
       ),
       backgroundColor: Colors.white,
     ),
+  ),
+  // dark input decoration theme
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(color: lightContainerColor),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(color: lightContainerColor),
+    ),
+  ),
+  textSelectionTheme: TextSelectionThemeData(
+    cursorColor: darkContainerColor,
+    selectionColor: darkContainerColor,
+    selectionHandleColor: darkBackgroundColor,
   ),
 );
