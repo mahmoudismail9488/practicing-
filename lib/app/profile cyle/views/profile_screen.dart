@@ -1,9 +1,11 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:new_app/app/auth%20cycle/views/sign_in_screen.dart';
 import 'package:new_app/app/profile%20cyle/widget/update_password.dart';
 import 'package:new_app/widgets/next_button.dart';
 import 'package:new_app/styles/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final ImagePicker picker = ImagePicker();
 
@@ -20,6 +22,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController phoneController = TextEditingController();
   File? personImage;
   bool readOnlyState = true;
+
+  void userData() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedImage = prefs.getString("image");
+    if (savedImage != null) {
+      setState(() {
+        personImage = File(savedImage);
+      });
+      final name = prefs.getString("name");
+      if (name != null) {
+        setState(() {
+          nameController.text = name;
+        });
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    userData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -76,10 +101,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           final res = await picker.pickImage(
                             source: ImageSource.gallery,
                           );
+                          final prefs = await SharedPreferences.getInstance();
                           if (res != null) {
                             setState(() {
                               personImage = File(res.path);
                             });
+                            prefs.setString("image", res.path);
                           }
                         },
                         icon: Icon(
@@ -142,7 +169,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   setState(() {
                                     readOnlyState = false;
                                   });
-                                  print(readOnlyState);
                                 },
                               )
                             : null,
@@ -218,14 +244,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Container(
               width: double.infinity,
               child: NextButton(
-                nextFunction: () {
+                nextFunction: () async {
+                  final prefs = await SharedPreferences.getInstance();
                   setState(() {
                     readOnlyState = true;
+                    prefs.setString("name", nameController.text);
                   });
                 },
                 text: "Save Changes",
               ),
             ),
+          Container(
+            padding: EdgeInsets.only(top: 48),
+            width: double.infinity,
+            child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(width: 1, color: Colors.red),
+
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              ),
+              onPressed: () async {
+                final prefs = await SharedPreferences.getInstance();
+                prefs.remove("signed");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (ctx) => SignInScreen()),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.logout_outlined, color: Colors.red),
+                  Text(
+                    "Logout",
+                    style: Theme.of(
+                      context,
+                    ).textTheme.labelMedium!.copyWith(color: Colors.red),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

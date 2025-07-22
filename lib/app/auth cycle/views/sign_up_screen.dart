@@ -6,10 +6,10 @@ import 'package:new_app/app/auth%20cycle/widget/auth_appbar.dart';
 import 'package:new_app/app/auth%20cycle/widget/brands_chips.dart';
 import 'package:new_app/app/auth%20cycle/widget/custom_dropdown.dart';
 import 'package:new_app/widgets/next_button.dart';
-
 import 'package:new_app/styles/colors.dart';
 import 'package:new_app/widgets/main_page.dart';
 import 'package:new_app/widgets/message.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -31,7 +31,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   List<VendorBrands> selectedBrands = [];
   final egyptPhoneRegex = RegExp(r'^(?:\+20|0)?1[0125][0-9]{8}$');
 
-  void createAccount(context) {
+  void createAccount(context) async {
+    final prefs = await SharedPreferences.getInstance();
     final myKeyState = formKey.currentState!.validate();
     if (selectedBrands.isEmpty) {
       ScaffoldMessenger.of(
@@ -51,6 +52,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (ctx) => MainPage()),
               );
+              prefs.setString("name", nameController.text);
+              prefs.setString("pass", passController.text);
+              prefs.setBool("signed", true);
             },
           ),
         ),
@@ -61,17 +65,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AuthAppbar(
-              title: "Create Account",
-              subTitle: "Get Started with Rawmart",
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-              child: Form(
-                key: formKey,
+      body: Column(
+        children: [
+          AuthAppbar(
+            title: "Create Account",
+            subTitle: "Get Started with Rawmart",
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+            child: Form(
+              key: formKey,
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   spacing: 8,
@@ -345,8 +349,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

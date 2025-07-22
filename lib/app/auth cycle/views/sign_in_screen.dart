@@ -6,6 +6,7 @@ import 'package:new_app/widgets/next_button.dart';
 import 'package:new_app/styles/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:new_app/widgets/main_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key, this.phone, this.pass});
@@ -23,12 +24,14 @@ class _SignInScreenState extends State<SignInScreen> {
   bool rememberMe = false;
   bool obsecureState = true;
   final egyptPhoneRegex = RegExp(r'^(?:\+20|0)?1[0125][0-9]{8}$');
-  void logIn(context) {
+  void logIn(context) async {
     final myKeyState = formKey.currentState!.validate();
+    final prefs = await SharedPreferences.getInstance();
     if (myKeyState == true) {
       Navigator.of(
         context,
-      ).push(MaterialPageRoute(builder: (ctx) => MainPage()));
+      ).pushReplacement(MaterialPageRoute(builder: (ctx) => MainPage()));
+      prefs.setBool("signed", true);
     }
   }
 
