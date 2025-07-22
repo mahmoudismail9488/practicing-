@@ -34,7 +34,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         padding: EdgeInsets.all(8),
         child: Row(
           spacing: 8,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             // dashboard item
             NavigationItem(

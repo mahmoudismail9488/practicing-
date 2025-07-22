@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_app/app/auth cycle/widget/auth_appbar.dart';
 import 'package:new_app/app/auth%20cycle/views/otp_screen.dart';
-import 'package:new_app/app/auth%20cycle/widget/next_button.dart';
+import 'package:new_app/widgets/next_button.dart';
 import 'package:new_app/styles/colors.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {

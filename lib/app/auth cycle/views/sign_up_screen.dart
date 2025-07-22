@@ -5,9 +5,10 @@ import 'package:new_app/app/auth%20cycle/views/sign_in_screen.dart';
 import 'package:new_app/app/auth%20cycle/widget/auth_appbar.dart';
 import 'package:new_app/app/auth%20cycle/widget/brands_chips.dart';
 import 'package:new_app/app/auth%20cycle/widget/custom_dropdown.dart';
-import 'package:new_app/app/auth%20cycle/widget/next_button.dart';
-import 'package:new_app/app/profile%20cyle/views/profile_screen.dart';
+import 'package:new_app/widgets/next_button.dart';
+
 import 'package:new_app/styles/colors.dart';
+import 'package:new_app/widgets/main_page.dart';
 import 'package:new_app/widgets/message.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -48,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             image: Image.asset("assets/imgs/succes.png"),
             callBack: () {
               Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (ctx) => ProfileScreen()),
+                MaterialPageRoute(builder: (ctx) => MainPage()),
               );
             },
           ),

@@ -25,7 +25,8 @@ class _NavigationItemState extends State<NavigationItem> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white.withAlpha(130),
+          border: BoxBorder.all(width: 1, color: Colors.white),
+          color: Colors.white.withAlpha(80),
           borderRadius: BorderRadius.circular(widget.selected ? 23 : 30),
         ),
         padding: EdgeInsets.all(8),

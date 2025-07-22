@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_app/app/auth%20cycle/views/sign_in_screen.dart';
 import 'package:new_app/app/auth%20cycle/views/sign_up_screen.dart';
 import 'package:new_app/app/auth cycle/models/on_boarding_mesaages.dart';
-import 'package:new_app/app/auth%20cycle/widget/next_button.dart';
+import 'package:new_app/widgets/next_button.dart';
 import 'package:new_app/styles/colors.dart';
 
 class OnboardingScreen extends StatefulWidget {

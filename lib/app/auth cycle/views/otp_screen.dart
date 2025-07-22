@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:new_app/app/auth cycle/widget/auth_appbar.dart';
-import 'package:new_app/app/auth cycle/widget/next_button.dart';
+import 'package:new_app/widgets/next_button.dart';
 import 'dart:async';
 
 import 'package:new_app/app/auth%20cycle/views/reset_password.dart';

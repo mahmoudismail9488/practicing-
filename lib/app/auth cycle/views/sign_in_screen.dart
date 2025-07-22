@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:new_app/app/auth%20cycle/views/forget_password_screen.dart';
 import 'package:new_app/app/auth%20cycle/views/sign_up_screen.dart';
 import 'package:new_app/app/auth%20cycle/widget/auth_appbar.dart';
-import 'package:new_app/app/auth%20cycle/widget/next_button.dart';
-import 'package:new_app/app/profile%20cyle/views/profile_screen.dart';
+import 'package:new_app/widgets/next_button.dart';
 import 'package:new_app/styles/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:new_app/widgets/main_page.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key, this.phone, this.pass});
@@ -28,7 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
     if (myKeyState == true) {
       Navigator.of(
         context,
-      ).push(MaterialPageRoute(builder: (ctx) => ProfileScreen()));
+      ).push(MaterialPageRoute(builder: (ctx) => MainPage()));
     }
   }
 
