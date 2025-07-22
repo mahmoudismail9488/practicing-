@@ -68,8 +68,10 @@ ThemeData lightTheme = ThemeData(
     selectionColor: lightContainerColor,
     selectionHandleColor: lightContainerColor,
   ),
+  cardTheme: CardThemeData(color: lightCardColor),
 );
 
+// dark them data
 ThemeData darkTheme = ThemeData(
   primaryColor: darkContainerColor,
   scaffoldBackgroundColor: darkBackgroundColor,
@@ -135,4 +137,6 @@ ThemeData darkTheme = ThemeData(
     selectionColor: darkContainerColor,
     selectionHandleColor: darkBackgroundColor,
   ),
+  // card dark theme
+  cardTheme: CardThemeData(color: darkCardColor),
 );

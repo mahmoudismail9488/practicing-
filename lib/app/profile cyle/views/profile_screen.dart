@@ -30,12 +30,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
       setState(() {
         personImage = File(savedImage);
       });
-      final name = prefs.getString("name");
-      if (name != null) {
-        setState(() {
-          nameController.text = name;
-        });
-      }
+    }
+    final name = prefs.getString("name");
+    if (name != null) {
+      setState(() {
+        nameController.text = name;
+      });
+    }
+    final phone = prefs.getString("phone");
+    if (phone != null) {
+      setState(() {
+        phoneController.text = phone;
+      });
     }
   }
 
@@ -180,26 +186,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   "Phone Number",
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
-                TextFormField(
-                  readOnly: true,
-                  maxLines: 1,
-                  textCapitalization: TextCapitalization.none,
-                  enableSuggestions: false,
-                  keyboardType: TextInputType.phone,
-                  cursorWidth: 2,
-                  cursorColor: Theme.of(context).primaryColor,
-                  controller: phoneController,
-                  textInputAction: TextInputAction.next,
-                  style: Theme.of(context).textTheme.labelMedium,
-                  decoration: InputDecoration()
-                      .applyDefaults(Theme.of(context).inputDecorationTheme)
-                      .copyWith(
-                        hint: Text("+02  0xx xxx xxxx"),
-                        prefixIcon: Icon(
-                          Icons.call_outlined,
-                          color: lightFormLabelColor,
+                IgnorePointer(
+                  child: TextFormField(
+                    readOnly: true,
+                    maxLines: 1,
+                    textCapitalization: TextCapitalization.none,
+                    enableSuggestions: false,
+                    keyboardType: TextInputType.phone,
+                    cursorWidth: 2,
+                    cursorColor: Theme.of(context).primaryColor,
+                    controller: phoneController,
+                    textInputAction: TextInputAction.next,
+                    style: Theme.of(context).textTheme.labelMedium,
+                    decoration: InputDecoration()
+                        .applyDefaults(Theme.of(context).inputDecorationTheme)
+                        .copyWith(
+                          hint: Text("+02  0xx xxx xxxx"),
+                          prefixIcon: Icon(
+                            Icons.call_outlined,
+                            color: lightFormLabelColor,
+                          ),
                         ),
-                      ),
+                  ),
                 ),
               ],
             ),

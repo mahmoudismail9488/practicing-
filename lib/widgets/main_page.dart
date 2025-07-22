@@ -16,9 +16,15 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title, style: Theme.of(context).textTheme.titleMedium),
-      ),
+      appBar: title == "Dashboard"
+          ? null
+          : AppBar(
+              automaticallyImplyLeading: false,
+              title: Text(
+                title,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ),
       body: currentPage,
       bottomNavigationBar: CustomNavigationBar(
         title: title,
