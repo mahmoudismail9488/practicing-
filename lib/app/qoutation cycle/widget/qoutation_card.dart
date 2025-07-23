@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:new_app/app/qoutation%20cycle/models/qoutation_model.dart';
 import 'package:new_app/styles/colors.dart';
 
 class QoutationCard extends StatelessWidget {
-  const QoutationCard({super.key});
+  const QoutationCard({
+    super.key,
+    required this.id,
+    required this.username,
+    required this.city,
+    required this.category,
+    required this.date,
+    required this.status,
+  });
+  final String id;
+  final String username;
+  final String city;
+  final String category;
+  final DateTime date;
+  final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -15,43 +30,86 @@ class QoutationCard extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
+              padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: containerColor,
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Column(
-                spacing: 4,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 8,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("#123456"),
+                      Text(id, style: Theme.of(context).textTheme.labelSmall),
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
-                          color: Colors.amber,
+                          color: statusColors[status]!.withAlpha(70),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 2.0,
+                            horizontal: 8,
+                          ),
                           child: Text(
-                            "Status",
-                            style: Theme.of(
-                              context,
-                            ).textTheme.labelMedium!.copyWith(fontSize: 12),
+                            status,
+                            style: Theme.of(context).textTheme.labelMedium!
+                                .copyWith(
+                                  fontSize: 12,
+                                  color: statusColors[status],
+                                ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  Row(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Date",
-                        style: Theme.of(
-                          context,
-                        ).textTheme.labelMedium!.copyWith(fontSize: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Category",
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                          Text(
+                            category,
+                            style: Theme.of(context).textTheme.labelSmall,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "City",
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                          Text(
+                            city,
+                            style: Theme.of(context).textTheme.labelSmall,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Date",
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                          Text(
+                            date.toString(),
+                            style: Theme.of(context).textTheme.labelSmall,
+                          ),
+                        ],
                       ),
                     ],
                   ),

@@ -50,11 +50,11 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             // qoutation item
             NavigationItem(
               icon: Icons.receipt,
-              title: "Qoutation",
+              title: "Qoutations",
               selected:
-                  context.watch<NavigationProvider>().title == "Qoutation",
+                  context.watch<NavigationProvider>().title == "Qoutations",
               action: () {
-                widget.currentPage("Qoutation", Qoutation());
+                widget.currentPage("Qoutations", Qoutation());
               },
             ),
             // orders Item

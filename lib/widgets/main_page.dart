@@ -20,7 +20,7 @@ class _MainPageState extends State<MainPage> {
               automaticallyImplyLeading: false,
               title: Text(
                 context.watch<NavigationProvider>().title,
-                style: Theme.of(context).textTheme.titleMedium,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
       body: context.watch<NavigationProvider>().screen,

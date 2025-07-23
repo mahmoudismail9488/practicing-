@@ -13,16 +13,33 @@ ThemeData lightTheme = ThemeData(
       fontFamily: GoogleFonts.poppins.toString(),
       fontSize: 14,
     ),
-
+    titleLarge: TextStyle(
+      color: lightAppBarTitle,
+      fontFamily: GoogleFonts.poppins.toString(),
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+    ),
     titleMedium: TextStyle(
       color: lightContainerColor,
       fontWeight: FontWeight.w800,
       fontFamily: GoogleFonts.poppins.toString(),
       fontSize: 16,
     ),
+    titleSmall: TextStyle(
+      color: lightFormLabelColor,
+      fontWeight: FontWeight.w700,
+      fontFamily: GoogleFonts.roboto.toString(),
+      fontSize: 8,
+    ),
     labelMedium: TextStyle(
       color: lightFormLabelColor,
       fontSize: 16,
+      fontFamily: GoogleFonts.roboto.toString(),
+      fontWeight: FontWeight.w500,
+    ),
+    labelSmall: TextStyle(
+      color: lightSmallLabelColor,
+      fontSize: 12,
       fontFamily: GoogleFonts.roboto.toString(),
       fontWeight: FontWeight.w500,
     ),
@@ -83,15 +100,33 @@ ThemeData darkTheme = ThemeData(
       fontFamily: GoogleFonts.poppins.toString(),
       fontSize: 14,
     ),
+    titleLarge: TextStyle(
+      color: darkAppBarTitle,
+      fontFamily: GoogleFonts.poppins.toString(),
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+    ),
     titleMedium: TextStyle(
       color: darkTitleTextColor,
       fontWeight: FontWeight.w800,
       fontFamily: GoogleFonts.poppins.toString(),
       fontSize: 16,
     ),
+    titleSmall: TextStyle(
+      color: darkFormLabelColor,
+      fontWeight: FontWeight.w700,
+      fontFamily: GoogleFonts.roboto.toString(),
+      fontSize: 8,
+    ),
     labelMedium: TextStyle(
       color: darkFormLabelColor,
       fontSize: 16,
+      fontFamily: GoogleFonts.roboto.toString(),
+      fontWeight: FontWeight.w500,
+    ),
+    labelSmall: TextStyle(
+      color: darkSmallLabelColor,
+      fontSize: 12,
       fontFamily: GoogleFonts.roboto.toString(),
       fontWeight: FontWeight.w500,
     ),
