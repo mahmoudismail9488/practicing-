@@ -3,7 +3,9 @@ import 'package:new_app/app/dashboard%20cycle/views/dashboard.dart';
 import 'package:new_app/app/orders%20cycle/views/orders.dart';
 import 'package:new_app/app/profile%20cyle/views/profile_screen.dart';
 import 'package:new_app/app/qoutation%20cycle/views/qoutation.dart';
+import 'package:new_app/helpers/navigation_provider.dart';
 import 'package:new_app/widgets/navigation_item.dart';
+import 'package:provider/provider.dart';
 
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({
@@ -21,7 +23,6 @@ class CustomNavigationBar extends StatefulWidget {
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
-  String selectedNav = "Dashboard";
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,11 +41,9 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             NavigationItem(
               icon: Icons.analytics_rounded,
               title: "Dashboard",
-              selected: selectedNav == "Dashboard",
+              selected:
+                  context.watch<NavigationProvider>().title == "Dashboard",
               action: () {
-                setState(() {
-                  selectedNav = "Dashboard";
-                });
                 widget.currentPage("Dashboard", Dashboard());
               },
             ),
@@ -52,11 +51,9 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             NavigationItem(
               icon: Icons.receipt,
               title: "Qoutation",
-              selected: selectedNav == "Qoutation",
+              selected:
+                  context.watch<NavigationProvider>().title == "Qoutation",
               action: () {
-                setState(() {
-                  selectedNav = "Qoutation";
-                });
                 widget.currentPage("Qoutation", Qoutation());
               },
             ),
@@ -64,11 +61,8 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             NavigationItem(
               icon: Icons.shopping_cart,
               title: "Orders",
-              selected: selectedNav == "Orders",
+              selected: context.watch<NavigationProvider>().title == "Orders",
               action: () {
-                setState(() {
-                  selectedNav = "Orders";
-                });
                 widget.currentPage("Orders", Orders());
               },
             ),
@@ -77,11 +71,8 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             NavigationItem(
               icon: Icons.person,
               title: "Profile",
-              selected: selectedNav == "Profile",
+              selected: context.watch<NavigationProvider>().title == "Profile",
               action: () {
-                setState(() {
-                  selectedNav = "Profile";
-                });
                 widget.currentPage("Profile", ProfileScreen());
               },
             ),

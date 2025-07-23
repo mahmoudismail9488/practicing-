@@ -4,7 +4,9 @@ import 'package:new_app/app/dashboard%20cycle/widget/numbers_card.dart';
 import 'package:new_app/app/dashboard%20cycle/widget/rawmart_pie_chart.dart';
 import 'package:new_app/app/orders%20cycle/views/orders.dart';
 import 'package:new_app/app/qoutation%20cycle/views/qoutation.dart';
+import 'package:new_app/helpers/navigation_provider.dart';
 import 'package:new_app/styles/colors.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
@@ -100,11 +102,9 @@ class _DashboardState extends State<Dashboard> {
                                     number: "50",
                                     numberColor: Theme.of(context).primaryColor,
                                     action: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (ctx) => Qoutation(),
-                                        ),
-                                      );
+                                      context
+                                          .read<NavigationProvider>()
+                                          .updateNav("Qoutation", Qoutation());
                                     },
                                   ),
                                 ),
@@ -115,11 +115,9 @@ class _DashboardState extends State<Dashboard> {
                                     number: "1",
                                     numberColor: numberColorGreen,
                                     action: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (ctx) => Qoutation(),
-                                        ),
-                                      );
+                                      context
+                                          .read<NavigationProvider>()
+                                          .updateNav("Qoutation", Qoutation());
                                     },
                                   ),
                                 ),
@@ -135,11 +133,9 @@ class _DashboardState extends State<Dashboard> {
                                     number: "11",
                                     numberColor: numberColorRed,
                                     action: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (ctx) => Qoutation(),
-                                        ),
-                                      );
+                                      context
+                                          .read<NavigationProvider>()
+                                          .updateNav("Qoutation", Qoutation());
                                     },
                                   ),
                                 ),
@@ -150,11 +146,9 @@ class _DashboardState extends State<Dashboard> {
                                     number: "12",
                                     numberColor: numberColorBlue,
                                     action: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (ctx) => Orders(),
-                                        ),
-                                      );
+                                      context
+                                          .read<NavigationProvider>()
+                                          .updateNav("Orders", Orders());
                                     },
                                   ),
                                 ),

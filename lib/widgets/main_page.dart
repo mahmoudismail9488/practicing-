@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:new_app/app/dashboard%20cycle/views/dashboard.dart';
+import 'package:new_app/helpers/navigation_provider.dart';
 import 'package:new_app/widgets/navigation_bar.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -10,29 +11,25 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  String title = "Dashboard";
-  Widget currentPage = Dashboard();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: title == "Dashboard"
+      appBar: context.watch<NavigationProvider>().title == "Dashboard"
           ? null
           : AppBar(
               automaticallyImplyLeading: false,
               title: Text(
-                title,
+                context.watch<NavigationProvider>().title,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
-      body: currentPage,
+      body: context.watch<NavigationProvider>().screen,
       bottomNavigationBar: CustomNavigationBar(
-        title: title,
-        page: currentPage,
+        title: context.watch<NavigationProvider>().title,
+        page: context.watch<NavigationProvider>().screen,
         currentPage: (newTitle, newPage) {
           setState(() {
-            title = newTitle;
-            currentPage = newPage;
+            context.read<NavigationProvider>().updateNav(newTitle, newPage);
           });
         },
       ),
