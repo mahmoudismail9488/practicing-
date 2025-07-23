@@ -30,9 +30,7 @@ class AuthAppbar extends StatelessWidget {
                 spacing: 8,
                 children: [
                   IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
+                    onPressed: () {},
                     icon: Icon(
                       Icons.arrow_back_ios,
                       size: 24,

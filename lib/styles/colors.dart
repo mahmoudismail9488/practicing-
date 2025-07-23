@@ -19,3 +19,4 @@ const smallTitleColor = Color(0xff7A8B96);
 const numberColorGreen = Color(0xff239F20);
 const numberColorRed = Color(0xffFF2C53);
 const numberColorBlue = Color(0xff2B3D9C);
+const containerColor = Color(0xffF4F6F7);
