@@ -3,7 +3,8 @@ import 'package:new_app/app/qoutation%20cycle/models/qoutation_model.dart';
 import 'package:new_app/app/qoutation%20cycle/widget/qoutation_card.dart';
 
 class Qoutation extends StatefulWidget {
-  const Qoutation({super.key});
+  const Qoutation({super.key, required this.qoute});
+  final String qoute;
 
   @override
   State<Qoutation> createState() => _QoutationState();
@@ -23,7 +24,6 @@ class _QoutationState extends State<Qoutation> {
         listOfQoutaions = qoutations;
       }
       if (searchController.text.isNotEmpty) {
-        print(searchController.text);
         listOfQoutaions = listOfQoutaions!.where((ele) {
           return ele.id.contains(searchController.text) ||
               ele.category.toLowerCase().contains(
@@ -39,6 +39,7 @@ class _QoutationState extends State<Qoutation> {
 
   @override
   void initState() {
+    qoutationFiltersState = widget.qoute;
     filterQoutes();
     super.initState();
   }
@@ -46,7 +47,7 @@ class _QoutationState extends State<Qoutation> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
       child: Column(
         children: [
           Padding(
@@ -182,14 +183,7 @@ class _QoutationState extends State<Qoutation> {
             child: SingleChildScrollView(
               child: Column(
                 children: listOfQoutaions!.map((ele) {
-                  return QoutationCard(
-                    id: ele.id,
-                    username: ele.username,
-                    city: ele.city,
-                    category: ele.category,
-                    date: ele.date,
-                    status: ele.status,
-                  );
+                  return QoutationCard(qoutation: ele);
                 }).toList(),
               ),
             ),

@@ -5,12 +5,14 @@ class ItemsModel {
     required this.quantity,
     required this.brandName,
     required this.size,
+    required this.price,
   });
   final String id;
   final String name;
   final int quantity;
   final String brandName;
   final String size;
+  final double price;
 }
 
 List<ItemsModel> items = [
@@ -20,6 +22,7 @@ List<ItemsModel> items = [
     quantity: 29,
     brandName: "Swedish",
     size: "2mm",
+    price: 0,
   ),
   ItemsModel(
     id: "u2",
@@ -27,6 +30,7 @@ List<ItemsModel> items = [
     quantity: 29,
     brandName: "Swedish",
     size: "4mm",
+    price: 0,
   ),
   ItemsModel(
     id: "u3",
@@ -34,6 +38,7 @@ List<ItemsModel> items = [
     quantity: 29,
     brandName: "Swedish",
     size: "6mm",
+    price: 0,
   ),
   ItemsModel(
     id: "u4",
@@ -41,6 +46,7 @@ List<ItemsModel> items = [
     quantity: 29,
     brandName: "Swedish",
     size: "8mm",
+    price: 0,
   ),
 ];
 
@@ -51,6 +57,7 @@ List<ItemsModel> plumbItems = [
     quantity: 29,
     brandName: "ahmed",
     size: "8mm",
+    price: 0,
   ),
   ItemsModel(
     id: "u2",
@@ -58,5 +65,6 @@ List<ItemsModel> plumbItems = [
     quantity: 29,
     brandName: "ahmed",
     size: "4mm",
+    price: 0,
   ),
 ];

@@ -1,23 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:new_app/app/qoutation%20cycle/models/qoutation_model.dart';
+import 'package:new_app/app/qoutation%20cycle/views/qoutation_details.dart';
+import 'package:new_app/helpers/date_time_formatting.dart';
 import 'package:new_app/styles/colors.dart';
 
 class QoutationCard extends StatelessWidget {
-  const QoutationCard({
-    super.key,
-    required this.id,
-    required this.username,
-    required this.city,
-    required this.category,
-    required this.date,
-    required this.status,
-  });
-  final String id;
-  final String username;
-  final String city;
-  final String category;
-  final DateTime date;
-  final String status;
+  const QoutationCard({super.key, required this.qoutation});
+  final QoutationModel qoutation;
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +31,14 @@ class QoutationCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(id, style: Theme.of(context).textTheme.labelSmall),
+                      Text(
+                        qoutation.id,
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
-                          color: statusColors[status]!.withAlpha(70),
+                          color: statusColors[qoutation.status]!.withAlpha(70),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
@@ -54,11 +46,11 @@ class QoutationCard extends StatelessWidget {
                             horizontal: 8,
                           ),
                           child: Text(
-                            status,
+                            qoutation.status,
                             style: Theme.of(context).textTheme.labelMedium!
                                 .copyWith(
                                   fontSize: 12,
-                                  color: statusColors[status],
+                                  color: statusColors[qoutation.status],
                                 ),
                           ),
                         ),
@@ -76,7 +68,7 @@ class QoutationCard extends StatelessWidget {
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                           Text(
-                            category,
+                            qoutation.category,
                             style: Theme.of(context).textTheme.labelSmall,
                           ),
                         ],
@@ -89,7 +81,7 @@ class QoutationCard extends StatelessWidget {
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                           Text(
-                            city,
+                            qoutation.city,
                             style: Theme.of(context).textTheme.labelSmall,
                           ),
                         ],
@@ -105,9 +97,12 @@ class QoutationCard extends StatelessWidget {
                             "Date",
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
-                          Text(
-                            date.toString(),
-                            style: Theme.of(context).textTheme.labelSmall,
+                          Container(
+                            constraints: BoxConstraints(maxWidth: 150),
+                            child: Text(
+                              covertToReadableDateandTime(qoutation.date),
+                              style: Theme.of(context).textTheme.labelSmall,
+                            ),
                           ),
                         ],
                       ),
@@ -120,7 +115,13 @@ class QoutationCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => QoutationDetails(qoutation: qoutation),
+                  ),
+                );
+              },
               style: TextButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadiusGeometry.circular(4),

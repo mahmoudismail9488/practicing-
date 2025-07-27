@@ -20,7 +20,7 @@ ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w600,
     ),
     titleMedium: TextStyle(
-      color: lightContainerColor,
+      color: const Color.fromARGB(255, 6, 70, 60),
       fontWeight: FontWeight.w800,
       fontFamily: GoogleFonts.poppins.toString(),
       fontSize: 16,
@@ -32,7 +32,7 @@ ThemeData lightTheme = ThemeData(
       fontSize: 8,
     ),
     labelMedium: TextStyle(
-      color: lightFormLabelColor,
+      color: lightContainerColor,
       fontSize: 16,
       fontFamily: GoogleFonts.roboto.toString(),
       fontWeight: FontWeight.w500,
@@ -42,6 +42,12 @@ ThemeData lightTheme = ThemeData(
       fontSize: 12,
       fontFamily: GoogleFonts.roboto.toString(),
       fontWeight: FontWeight.w500,
+    ),
+    labelLarge: TextStyle(
+      color: smallTitleColor,
+      fontFamily: GoogleFonts.inter.toString(),
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
     ),
   ),
   // Elevated button theme
@@ -68,6 +74,7 @@ ThemeData lightTheme = ThemeData(
   appBarTheme: AppBarTheme(
     backgroundColor: lightBackgroundColor,
     centerTitle: true,
+    scrolledUnderElevation: 0,
   ),
   // input decoration theme
   inputDecorationTheme: InputDecorationTheme(
@@ -130,11 +137,18 @@ ThemeData darkTheme = ThemeData(
       fontFamily: GoogleFonts.roboto.toString(),
       fontWeight: FontWeight.w500,
     ),
+    labelLarge: TextStyle(
+      color: darkLabelTextColor,
+      fontFamily: GoogleFonts.inter.toString(),
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
+    ),
   ),
   // dark theme of appbar
   appBarTheme: AppBarTheme(
     backgroundColor: darkBackgroundColor,
     centerTitle: true,
+    scrolledUnderElevation: 0,
   ),
   // Elevated button theme
   elevatedButtonTheme: ElevatedButtonThemeData(

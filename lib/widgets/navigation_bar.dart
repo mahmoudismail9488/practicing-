@@ -26,7 +26,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+      padding: EdgeInsets.only(left: 16, right: 16, bottom: 32),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
@@ -54,7 +54,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               selected:
                   context.watch<NavigationProvider>().title == "Qoutations",
               action: () {
-                widget.currentPage("Qoutations", Qoutation());
+                widget.currentPage("Qoutations", Qoutation(qoute: "All"));
               },
             ),
             // orders Item

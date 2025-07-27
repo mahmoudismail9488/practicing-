@@ -58,7 +58,7 @@ class _DashboardState extends State<Dashboard> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Welcome, Back",
+                        "Welcome Back!",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       Text(
@@ -104,7 +104,10 @@ class _DashboardState extends State<Dashboard> {
                                     action: () {
                                       context
                                           .read<NavigationProvider>()
-                                          .updateNav("Qoutation", Qoutation());
+                                          .updateNav(
+                                            "Qoutations",
+                                            Qoutation(qoute: "All"),
+                                          );
                                     },
                                   ),
                                 ),
@@ -117,7 +120,10 @@ class _DashboardState extends State<Dashboard> {
                                     action: () {
                                       context
                                           .read<NavigationProvider>()
-                                          .updateNav("Qoutation", Qoutation());
+                                          .updateNav(
+                                            "Qoutations",
+                                            Qoutation(qoute: "Priced"),
+                                          );
                                     },
                                   ),
                                 ),
@@ -135,7 +141,10 @@ class _DashboardState extends State<Dashboard> {
                                     action: () {
                                       context
                                           .read<NavigationProvider>()
-                                          .updateNav("Qoutation", Qoutation());
+                                          .updateNav(
+                                            "Qoutations",
+                                            Qoutation(qoute: "Expired"),
+                                          );
                                     },
                                   ),
                                 ),
